@@ -4,8 +4,8 @@
 // @version      1.0
 // @description  Show a box above the selected text with options to search on Google, Yahoo.
 // @author       mark
-// @updateURL    https://drive.google.com/uc?id=1JSQilrDn3g8e4YENn8H0vQVa7NzVkGD3&export=download
-// @downloadURL  https://drive.google.com/uc?id=1JSQilrDn3g8e4YENn8H0vQVa7NzVkGD3&export=download
+// @updateURL    https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search-script.user.js
+// @downloadURL  https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search-script.user.js
 // @match        *://*/*
 // @grant        none
 // ==/UserScript==
@@ -82,7 +82,7 @@
     function checkForUpdates() {
         const currentVersion = '1.0';
 
-        fetch('https://drive.google.com/uc?id=1JSQilrDn3g8e4YENn8H0vQVa7NzVkGD3&export=download', { method: 'HEAD' })
+        fetch('https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search-script.user.js', { method: 'HEAD' })
             .then(response => {
                 const remoteVersion = response.headers.get('script-version'); // Assuming you set this header manually
                 if (remoteVersion && remoteVersion !== currentVersion) {
