@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Search Text
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Show a box above the selected text with options to search on Google, Yahoo.
+// @version      1.1
+// @description  Added bing to the search
 // @author       mark
 // @updateURL    https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search.user.js
 // @downloadURL  https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search.user.js
@@ -16,7 +16,7 @@
     let searchBox;
     let updateNotification;
 
-    const currentVersion = '1.0';
+    const currentVersion = '1.1';
 
     // Create the search box element
     function createSearchBox() {
@@ -44,9 +44,15 @@
             performSearch('yahoo');
         };
 
+        const bingButton = document.createElement('button');
+        bingButton.textContent = 'Search Bing';
+        bingButton.onclick = () => {
+            performSearch('bing');
+        };
 
         searchBox.appendChild(googleButton);
         searchBox.appendChild(yahooButton);
+        searchBox.appendChild(bingButton);
         document.body.appendChild(searchBox);
     }
 
@@ -122,6 +128,8 @@
             searchURL = `https://www.google.com/search?q=${encodeURIComponent(selectedText)}`;
         } else if (engine === 'yahoo') {
             searchURL = `https://search.yahoo.com/search?p=${encodeURIComponent(selectedText)}`;
+        } else if (engine === 'bing') {
+            searchURL = `https://www.bing.com/search?q=${encodeURIComponent(selectedText)}`;
         }
 
         window.open(searchURL, '_blank');
