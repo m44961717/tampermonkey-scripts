@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Search the Selected Text
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.2
 // @description  Show a box above the selected text with options to search on Google, Yahoo.
 // @author       mark
 // @updateURL    https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search-script.user.js
