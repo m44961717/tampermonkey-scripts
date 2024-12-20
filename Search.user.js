@@ -2,7 +2,7 @@
 // @name         Search Text
 // @namespace    http://tampermonkey.net/
 // @version      1.1
-// @description  Added bing to the search
+// @description  Added bing to the search.
 // @author       mark
 // @updateURL    https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search.user.js
 // @downloadURL  https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search.user.js
