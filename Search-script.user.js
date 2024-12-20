@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Search Text
+// @name         Search the Selected Text
 // @namespace    http://tampermonkey.net/
-// @version      1.1
-// @description  Show a box above the selected text with options to search on Google, Yahoo, or Bing
+// @version      1.0
+// @description  Show a box above the selected text with options to search on Google, Yahoo.
 // @author       mark
 // @updateURL    https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search-script.user.js
 // @downloadURL  https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search-script.user.js
@@ -42,15 +42,8 @@
             performSearch('yahoo');
         };
 
-        const bingButton = document.createElement('button');
-        bingButton.textContent = 'Search Bing';
-        bingButton.onclick = () => {
-            performSearch('bing');
-        };
-
         searchBox.appendChild(googleButton);
         searchBox.appendChild(yahooButton);
-        searchBox.appendChild(bingButton);
         document.body.appendChild(searchBox);
     }
 
@@ -87,7 +80,7 @@
 
     // Check for updates
     function checkForUpdates() {
-        const currentVersion = '1.1';
+        const currentVersion = '1.0';
 
         fetch('https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/Search-script.user.js', { method: 'HEAD' })
             .then(response => {
@@ -109,8 +102,6 @@
             searchURL = `https://www.google.com/search?q=${encodeURIComponent(selectedText)}`;
         } else if (engine === 'yahoo') {
             searchURL = `https://search.yahoo.com/search?p=${encodeURIComponent(selectedText)}`;
-        } else if (engine === 'bing') {
-            searchURL = `https://www.bing.com/search?q=${encodeURIComponent(selectedText)}`;
         }
 
         window.open(searchURL, '_blank');
@@ -139,7 +130,7 @@
         document.addEventListener('mouseup', (event) => {
             setTimeout(() => showSearchBox(event), 0); // Delay to ensure selection is registered
         });
-
+ 
         document.addEventListener('mousedown', (event) => {
             if (!searchBox.contains(event.target)) {
                 searchBox.style.display = 'none'; // Hide if clicked outside the box
