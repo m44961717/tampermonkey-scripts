@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Search Text
 // @namespace    http://tampermonkey.net/
-// @version      1.2
-// @description  Removed upgrade button and checker.
+// @version      1.3
+// @description  update checker has been fixed.
 // @author       mark
 // @updateURL    https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/search.user.js
 // @downloadURL  https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/search.user.js
