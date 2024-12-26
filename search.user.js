@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Search Text
 // @namespace    http://tampermonkey.net/
-// @version      1.3
-// @description  update checker has been fixed.
+// @version      1.4
+// @description  Copy button added.
 // @author       mark
 // @updateURL    https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/search.user.js
 // @downloadURL  https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/search.user.js
@@ -27,6 +27,20 @@
         searchBox.style.zIndex = '9999';
         searchBox.style.display = 'none';
 
+        const copyButton = document.createElement('button');
+        copyButton.textContent = 'Copy';
+        copyButton.style.marginRight = '10px';
+        copyButton.onclick = () => {
+            const selectedText = window.getSelection().toString().trim();
+            if (selectedText) {
+                navigator.clipboard.writeText(selectedText).then(() => {
+                    alert('Copied to clipboard: ' + selectedText);
+                }).catch(err => {
+                    alert('Failed to copy text: ' + err);
+                });
+            }
+        };
+
         const googleButton = document.createElement('button');
         googleButton.textContent = 'Search Google';
         googleButton.style.marginRight = '10px';
@@ -47,6 +61,7 @@
             performSearch('bing');
         };
 
+        searchBox.appendChild(copyButton);
         searchBox.appendChild(googleButton);
         searchBox.appendChild(yahooButton);
         searchBox.appendChild(bingButton);
