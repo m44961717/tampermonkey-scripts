@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Search Text
 // @namespace    http://tampermonkey.net/
-// @version      1.4
-// @description  Copy button added.
+// @version      1.5
+// @description  Copy notification removed
 // @author       mark
 // @updateURL    https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/search.user.js
 // @downloadURL  https://raw.githubusercontent.com/m44961717/tampermonkey-scripts/refs/heads/main/search.user.js
@@ -33,10 +33,8 @@
         copyButton.onclick = () => {
             const selectedText = window.getSelection().toString().trim();
             if (selectedText) {
-                navigator.clipboard.writeText(selectedText).then(() => {
-                    alert('Copied to clipboard: ' + selectedText);
-                }).catch(err => {
-                    alert('Failed to copy text: ' + err);
+                navigator.clipboard.writeText(selectedText).catch(err => {
+                    console.error('Failed to copy text: ', err);
                 });
             }
         };
